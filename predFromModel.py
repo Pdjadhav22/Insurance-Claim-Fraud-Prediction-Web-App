@@ -37,6 +37,7 @@ class predFromModel:
             modelName = fileops.findBestModel(cluster)
             print(modelName, " selected for #", cluster)
             model = fileops.modelLoader(modelName)
+            print(type(clusterData),clusterData.columns)
             clusterDataPred = model.predict(clusterData)
             for rec in clusterDataPred:
                 if rec == 0:
@@ -46,6 +47,6 @@ class predFromModel:
 
         final = pd.DataFrame(predictions, columns=["predictions"])
         final.to_csv("predOutFile/Predictions.csv")
-        print("Prediction Completed")
+        return "Prediction Completed"
 
 

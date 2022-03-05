@@ -499,3 +499,4 @@
 497,0,500/1000,1000,1377.04,0,MALE,College,tech-support,wife,61400,-41100,Multi-vehicle Collision,Rear Collision,Minor Damage,Ambulance,6,4,NO,1,1,NO,6620,6620,26480
 498,405,250/500,500,1237.88,0,MALE,MD,exec-managerial,not-in-family,0,-46900,Single Vehicle Collision,Front Collision,Major Damage,Police,11,1,NO,0,0,NO,5780,5780,52020
 499,304,100/300,1000,1525.86,0,FEMALE,PhD,craft-repair,own-child,0,0,Single Vehicle Collision,Side Collision,Minor Damage,Other,2,1,YES,1,1,YES,13340,6670,53360
+500,30,250/500,500,0.42,0,MALE,MD,adm-clerical,husband,100,-100,Single Vehicle Collision,Side Collision,Major Damage,None,1,1,YES,1,0,YES,66,37,17

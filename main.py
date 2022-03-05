@@ -1,9 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 import os
 from data_validation import dataValidation
 from trainModel import trainingModel
 from predDataVal import predDataVal
 from predFromModel import predFromModel
+from predSingleEntry import predFromRec
 
 import  warnings
 warnings.filterwarnings("ignore")
@@ -33,29 +34,46 @@ def trainRouteClient():
 
     else: print('Bad path dir')
 
-trainRouteClient()
+# trainRouteClient()
 
+@app.route('/predict', methods=['POST'])
 def predictRouteClient():
-    path  = 'D:\Learning\Data Science\E2E Project\insuranceFraudDetection\Self\PredictionBatchFile'+ "/"
+    if request.method == 'POST':
+        path = request.form['filepath']
+            # path  = 'D:\Learning\Data Science\E2E Project\insuranceFraudDetection\Self\PredictionBatchFile'+ "/"
+        
+        if os.path.isdir(path):
+            
+            #Prediction Data Validation
+            predictDataValid = predDataVal(path)
+            predictDataValid.predDatavalInsertion()
 
-    if os.path.isdir(path):
+            #Predicitons
+            predicitor = predFromModel()
+            res = predicitor.predModel()
 
-        #Prediction Data Validation
-        predictDataValid = predDataVal(path)
-        predictDataValid.predDatavalInsertion()
+            return render_template('index.html',
+             batchPredictionText='''Predcition Completed
+            Output saved in predOutFile/Prediction.csv''')
+            return res
 
-        #Predicitons
-        predicitor = predFromModel()
-        predicitor.predModel()
+@app.route('/singleRec', methods=['POST'])
+def predRec():
+    if request.method=='POST':         
+        predSinglerec = predFromRec()
+        dictData = predSinglerec.getValues()
+        res = predSinglerec.predFromRec(dictData)
 
+        if (res == 'No'):
+            return render_template('index.html', prediction_text='No, This Claim is not Fraud')
+    
 
-predictRouteClient()
+        else:
+            return render_template('Diabetes_App.html', prediction_text= 'Yes, This calim is a Fraud')
+            # return res
 
+# predRec()
+# predictRouteClient()
 
-
-
-
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)

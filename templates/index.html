@@ -6,8 +6,248 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fruad_detection</title>
+    <style>
+        body {background-color: aquamarine;}
+        h1 {text-align: center;}
+        .pathUserInput{
+            width: 50%;
+            float: right;
+            background-color: blanchedalmond;
+            text-align: center;
+            }
+        .IndividualPredict{
+            width: 50%;
+            float: left;
+            background-color: yellowgreen;
+            text-align: center;
+            }
+        .Predict{
+            width: 50%;
+            /* float: left; */
+            background-color: rgb(221, 202, 33);
+            text-align: center;
+            font-style: italic;
+            font: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: xx-large;
+            }
+        .batchPredict{
+            width: 50%;
+            float: right;
+            background-color: rgb(221, 202, 33);
+            text-align: center;
+            font-style: italic;
+            font: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: xx-large;
+        }
+        
+
+    </style>
 </head>
 <body>
-<h1>Welcome to Insurance Fraud Detector</h1>
+<h1>Welcome to Insurance Fraud Predictor</h1>
+<br>
+<div class="pathUserInput">
+    <form action="/predict" method="post" name="Predict">
+        <input type="text", name="filepath", placeholder="Enter Batch File Path" >
+        <br><br><input type="submit" value="Predict from Batch files">
+    </form>
+</div>
+<section class="IndividualPredict">
+    <h2>Enter below details to Predict Probable Fraud</h2>
+    <form action="/singleRec" method="POST">
+        months_as_customer:
+        <input type="number" name="months_as_customer">
+        
+        <!-- policy_csl -->
+        <br>policy_csl: <select name="policy_csl" id="policy_csl">
+        <!-- <input list="policy_csl"  name="policy_csl"> -->
+            <option value="250/500">250/500</option>
+            <option value="100/300">100/300</option>
+            <option value="500/1000">500/1000</option>
+        </select>
+        
+        <!-- policy_deductable -->
+        <br>policy_deductable: <select name="policy_deductable" id="policy_deductable">
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+            </select>
+        
+        <!-- policy_annual_premium -->
+        <br>policy_annual_premium:
+        <input type="number" min="0" step="0.01" name="policy_annual_premium">
+
+        <!-- umbrella_limit -->
+        <br>umbrella_limit: 
+        <select name="umbrella_limit" id="umbrella_limit">
+                <option value="0">0</option>
+                <option value="3000000">30L</option>
+                <option value="4000000">40L</option>
+                <option value="5000000">50L</option>
+                <option value="6000000">60L</option>
+                <option value="7000000">70L</option>
+            </select>
+
+        <!-- insured_sex -->
+        <br>insured_sex:
+         <select name="insured_sex" id="insured_sex">
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+            </select>
+
+        <!-- insured_education_level -->
+        <br>insured_education_level: 
+        <select name="insured_education_level" id="insured_education_level">
+            <option value="MD">MD</option>
+            <option value="PhD">PhD</option>
+            <option value="Associate">Associate</option>
+            <option value="High School">High School</option>
+            <option value="College">College</option>
+            <option value="JD">JD</option>
+        </select>
+
+        <!-- insured_occupation -->
+        <br>insured_occupation: 
+        <select name="insured_occupation" id="insured_occupation">
+            <option value="adm-clerical">adm-clerical</option>
+            <option value="armed-forces ">armed-forces </option>
+            <option value="craft-repair">craft-repair</option>
+            <option value="exec-managerial">exec-managerial</option>
+            <option value="farming-fishing">farming-fishing</option>
+            <option value="handlers-cleaners">handlers-cleaners</option>
+            <option value="machine-op-inspct">machine-op-inspct</option>
+            <option value="other-service">other-service</option>
+            <option value="priv-house-serv">priv-house-serv</option>
+            <option value="prof-specialty">prof-specialty</option>
+            <option value="protective-serv">protective-serv</option>
+            <option value="sales">sales</option>
+            <option value="tech-support">tech-support</option>
+            <option value="transport-moving">transport-moving</option>
+        </select>
+
+        <!-- insured_relationship -->
+        <br>insured_relationship: 
+        <select name="insured_relationship" id="insured_relationship">
+            <option value="husband">Husband</option>
+            <option value="other-relative">other-relative</option>
+            <option value="own-child">own-child</option>
+            <option value="unmarried">unmarried</option>
+            <option value="wife">wife</option>
+            <option value="not-in-family">not-in-family</option>
+        </select>
+
+        <!-- capital_gains -->
+        <br>capital_gains:
+        <input type="number" min="0" step="100" name="capital_gains" id="capital_gains">
+
+        <!-- capital_loss -->
+        <br>capital_loss:
+        <input type="number" min="0" step="100" name="capital_loss" id="capital_loss">
+
+        <!-- incident_type -->
+        <br>incident_type: 
+        <select name="incident_type" id="incident_type">
+            <option value="Single Vehicle Collision">Single Vehicle Collision</option>
+            <option value="Vehicle Theft">Vehicle Theft</option>
+            <option value="Multi-vehicle Collision">Multi-vehicle Collision</option>
+            <option value="Parked Car">Parked Car</option>
+        </select>
+
+        <!-- collision_type -->
+        <br>collision_type: 
+        <select name="collision_type" id="collision_type">
+            <option value="Side Collision">Side Collision</option>
+            <option value="Rear Collision">Rear Collision</option>
+            <option value="Front Collision">Front Collision</option>
+        </select>
+
+        <!-- incident_severity -->
+        <br>incident_severity: 
+        <select name="incident_severity" id="incident_severity">
+            <option value="Major Damage">Major Damage</option>
+            <option value="Minor Damage">Minor Damage</option>
+            <option value="Total Loss">Total Loss</option>
+            <option value="Trivial Damage">Trivial Damage</option>
+        </select>
+
+        <!-- authorities_contacted -->
+        <br>authorities_contacted: 
+        <select name="authorities_contacted" id="authorities_contacted">
+            <option value="None">None</option>
+            <option value="Police">Police</option>
+            <option value="Fire">Fire</option>
+            <option value="Ambulance">Ambulance</option>
+            <option value="Other">Other</option>          
+        </select>
+
+        <!-- incident_hour_of_the_day -->
+        <br>incident_hour_of_the_day:
+        <input type="number" min="0" max="23" step="1" name="incident_hour_of_the_day" id="incident_hour_of_the_day">
+
+        <!-- number_of_vehicles_involved -->
+        <br>number_of_vehicles_involved:
+        <input type="number" min="1" step="1" max="4" name="number_of_vehicles_involved" id="number_of_vehicles_involved">
+
+        <!-- property_damage -->
+        <br>property_damage:
+        <select name="property_damage" id="property_damage">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+
+        <!-- bodily_injuries -->
+        <br>bodily_injuries:
+        <input type="number" min="0" max="2" step="1" name="bodily_injuries" id="bodily_injuries">
+
+        <!-- witnesses -->
+        <br>witnesses:
+        <input type="number" min="0" max="3" step="1" name="witnesses" id="witnesses">
+
+        <!-- police_report_available -->
+        <br>police_report_available:
+        <select name="police_report_available" id="police_report_available">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+
+        <!-- injury_claim -->
+        <br>injury_claim:
+        <input type="number" min="0" name="injury_claim" id="injury_claim">
+
+        <!-- property_claim -->
+        <br>property_claim:
+        <input type="number" min="0" name="property_claim" id="property_claim">
+
+        <!-- vehicle_claim -->
+        <br>vehicle_claim:
+        <input type="number" min="0" name="vehicle_claim" id="vehicle_claim">
+
+        <!-- submit -->
+        <br><input type="submit" value="Predict" onclick='predict; return true'>
+    </form>
+</section>
+
+<!-- <script>
+function predict()
+{
+    document.getElementById('pred').innerHTML = document.Predict;
+}
+</script>
+<p>id='pred'</p> -->
+<br>
+<div class="Predict">
+    {{ prediction_text }}
+</div>
+
+<br>
+<!-- batchPredictionText -->
+<div class="batchPredict">
+    {{ batchPredictionText }}
+</div>
+
+
+
 </body>
 </html>
