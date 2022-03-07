@@ -69,7 +69,7 @@ def predRec():
     
 
         else:
-            return render_template('Diabetes_App.html', prediction_text= 'Yes, This calim is a Fraud')
+            return render_template('index.html', prediction_text= 'Yes, This calim is a Fraud')
             # return res
 
 # predRec()
