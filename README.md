@@ -1,4 +1,4 @@
-# Insurance Claim Fraud Detection App
+# Insurance Claim Fraud Prediction Web App
 An user-friednly and easy to use web application which was built using python,flask & HTML to help Ealy detection of Probable Fraud Insurance Claims.
 ## Problem Statement
 - To identify potential Fraud insurance claims 
