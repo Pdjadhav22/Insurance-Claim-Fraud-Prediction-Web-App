@@ -20,20 +20,15 @@ An user-friednly and easy to use web application which was built using python,fl
 ![devLifeCycle](https://user-images.githubusercontent.com/83899750/156908354-04affb21-99be-4173-a158-0e96e9724e77.jpg)
 ![AppFlowChart](https://user-images.githubusercontent.com/83899750/156908995-7ff76f17-189d-4e2c-827a-50b6dbfb36dc.jpg)
   
-## Installation
-The application is written in Python 3.7. If you don't have Python installed you can find it [here](https://www.python.org/) If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip. To install the required packages and libraries, run this command in the project directory after cloning the repository :-
-
-```
-pip install -r requirements.txt
-```
 ## Languages Used
 - Python
 - Flask Web Framework
 - SQL
 - HTML and CSS
 
+## Installation
+The application is written in Python 3.7. If you don't have Python installed you can find it [here](https://www.python.org/) If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip. To install the required packages and libraries, run this command in the project directory after cloning the repository :-
 
-
-
-
-
+```
+pip install -r requirements.txt
+```
