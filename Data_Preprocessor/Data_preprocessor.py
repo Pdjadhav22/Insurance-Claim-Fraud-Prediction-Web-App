@@ -18,8 +18,8 @@ class preProcessing:
         return  self.data
 
     def removeColumns(self,data,cols):
-        dataWremovedcols = data.drop(cols, axis=1)
-        print('Specified columns are removed from Dataset')
+        dataWremovedcols = data[cols]
+        print('Non releted columns are removed from Dataset')
         return  dataWremovedcols
 
     def removeWhiteSpaces(self,data):
@@ -41,13 +41,14 @@ class preProcessing:
         # Imputation of missing values
         numImputer = SimpleImputer()
         catImputer = SimpleImputer(strategy='most_frequent')
-        for col in colsWithMissingValues:
-            if data[col].dtype=='O':
-                data[col] = catImputer.fit_transform(data[[col]])
-            else:
-                data[col] = numImputer.fit_transform(data[[[col]]])
-        print('Missing values handleded')
-        data.to_csv('Data_Preprocessor/MissingImpute.csv')
+        if len(colsWithMissingValues)>0:
+            for col in colsWithMissingValues:
+                if data[col].dtype=='O':
+                    data[col] = catImputer.fit_transform(data[[col]])
+                else:
+                    data[col] = numImputer.fit_transform(data[[[col]]])
+            print('Missing values handleded')
+            data.to_csv('Data_Preprocessor/MissingImpute.csv')
         return data
 
     def seperateLabels(self, data):
@@ -70,15 +71,15 @@ class preProcessing:
 
         # mapping know features manualy
         # Hard code Cat encoding based on EDA
-        catData['policy_csl'] = catData['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
-        catData['insured_education_level'] = data['insured_education_level'].map(
-            {'JD': 1, 'High School': 2, 'College': 3, 'Masters': 4, 'Associate': 5, 'MD': 6, 'PhD': 7})
+        # catData['policy_csl'] = catData['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+        # catData['insured_education_level'] = data['insured_education_level'].map(
+            # {'JD': 1, 'High School': 2, 'College': 3, 'Masters': 4, 'Associate': 5, 'MD': 6, 'PhD': 7})
         catData['incident_severity'] = catData['incident_severity'].map(
             {'Trivial Damage': 1, 'Minor Damage': 2, 'Major Damage': 3, 'Total Loss': 4})
-        catData['insured_sex'] = catData['insured_sex'].map({'FEMALE': 0, 'MALE': 1})
-        catData['property_damage'] = catData['property_damage'].map({'NO': 0, 'YES': 1})
-        catData['police_report_available'] =catData['police_report_available'].map({'NO': 0, 'YES': 1})
-        catDataMapped = ['policy_csl', 'insured_education_level','incident_severity', 'insured_sex', 'property_damage', 'police_report_available']
+        # catData['insured_sex'] = catData['insured_sex'].map({'FEMALE': 0, 'MALE': 1})
+        # catData['property_damage'] = catData['property_damage'].map({'NO': 0, 'YES': 1})
+        # catData['police_report_available'] =catData['police_report_available'].map({'NO': 0, 'YES': 1})
+        # catDataMapped = ['policy_csl', 'insured_education_level','incident_severity', 'insured_sex', 'property_damage', 'police_report_available']
 
         # for Training dataset
         try:

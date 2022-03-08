@@ -57,16 +57,15 @@
 <section class="IndividualPredict">
     <h2>Enter below details to Predict Probable Fraud</h2>
     <form action="/singleRec" method="POST">
-        months_as_customer:
+        <!-- months_as_customer:
         <input type="number" name="months_as_customer">
-        
+         -->
         <!-- policy_csl -->
-        <br>policy_csl: <select name="policy_csl" id="policy_csl">
-        <!-- <input list="policy_csl"  name="policy_csl"> -->
+        <!-- <br>policy_csl: <select name="policy_csl" id="policy_csl">
             <option value="250/500">250/500</option>
             <option value="100/300">100/300</option>
             <option value="500/1000">500/1000</option>
-        </select>
+        </select> -->
         
         <!-- policy_deductable -->
         <br>policy_deductable: <select name="policy_deductable" id="policy_deductable">
@@ -77,7 +76,7 @@
         
         <!-- policy_annual_premium -->
         <br>policy_annual_premium:
-        <input type="number" min="0" step="0.01" name="policy_annual_premium">
+        <input type="number" min="500" step="0.01" name="policy_annual_premium">
 
         <!-- umbrella_limit -->
         <br>umbrella_limit: 
@@ -91,14 +90,14 @@
             </select>
 
         <!-- insured_sex -->
-        <br>insured_sex:
+        <!-- <br>insured_sex:
          <select name="insured_sex" id="insured_sex">
                 <option value="MALE">MALE</option>
                 <option value="FEMALE">FEMALE</option>
-            </select>
+            </select> -->
 
         <!-- insured_education_level -->
-        <br>insured_education_level: 
+        <!-- <br>insured_education_level: 
         <select name="insured_education_level" id="insured_education_level">
             <option value="MD">MD</option>
             <option value="PhD">PhD</option>
@@ -106,10 +105,10 @@
             <option value="High School">High School</option>
             <option value="College">College</option>
             <option value="JD">JD</option>
-        </select>
+        </select> -->
 
         <!-- insured_occupation -->
-        <br>insured_occupation: 
+        <!-- <br>insured_occupation: 
         <select name="insured_occupation" id="insured_occupation">
             <option value="adm-clerical">adm-clerical</option>
             <option value="armed-forces ">armed-forces </option>
@@ -125,10 +124,10 @@
             <option value="sales">sales</option>
             <option value="tech-support">tech-support</option>
             <option value="transport-moving">transport-moving</option>
-        </select>
+        </select> -->
 
         <!-- insured_relationship -->
-        <br>insured_relationship: 
+        <!-- <br>insured_relationship: 
         <select name="insured_relationship" id="insured_relationship">
             <option value="husband">Husband</option>
             <option value="other-relative">other-relative</option>
@@ -136,15 +135,15 @@
             <option value="unmarried">unmarried</option>
             <option value="wife">wife</option>
             <option value="not-in-family">not-in-family</option>
-        </select>
+        </select> -->
 
         <!-- capital_gains -->
-        <br>capital_gains:
-        <input type="number" min="0" step="100" name="capital_gains" id="capital_gains">
+        <!-- <br>capital_gains:
+        <input type="number" min="0" step="100" name="capital_gains" id="capital_gains"> -->
 
         <!-- capital_loss -->
-        <br>capital_loss:
-        <input type="number" min="0" step="100" name="capital_loss" id="capital_loss">
+        <!-- <br>capital_loss:
+        <input type="number" min="0" step="100" name="capital_loss" id="capital_loss"> -->
 
         <!-- incident_type -->
         <br>incident_type: 
@@ -156,12 +155,12 @@
         </select>
 
         <!-- collision_type -->
-        <br>collision_type: 
+        <!-- <br>collision_type: 
         <select name="collision_type" id="collision_type">
             <option value="Side Collision">Side Collision</option>
             <option value="Rear Collision">Rear Collision</option>
             <option value="Front Collision">Front Collision</option>
-        </select>
+        </select> -->
 
         <!-- incident_severity -->
         <br>incident_severity: 
@@ -183,19 +182,19 @@
         </select>
 
         <!-- incident_hour_of_the_day -->
-        <br>incident_hour_of_the_day:
-        <input type="number" min="0" max="23" step="1" name="incident_hour_of_the_day" id="incident_hour_of_the_day">
+        <!-- <br>incident_hour_of_the_day:
+        <input type="number" min="0" max="23" step="1" name="incident_hour_of_the_day" id="incident_hour_of_the_day"> -->
 
         <!-- number_of_vehicles_involved -->
         <br>number_of_vehicles_involved:
         <input type="number" min="1" step="1" max="4" name="number_of_vehicles_involved" id="number_of_vehicles_involved">
 
         <!-- property_damage -->
-        <br>property_damage:
+        <!-- <br>property_damage:
         <select name="property_damage" id="property_damage">
             <option value="YES">YES</option>
             <option value="NO">NO</option>
-        </select>
+        </select> -->
 
         <!-- bodily_injuries -->
         <br>bodily_injuries:
@@ -206,26 +205,62 @@
         <input type="number" min="0" max="3" step="1" name="witnesses" id="witnesses">
 
         <!-- police_report_available -->
-        <br>police_report_available:
+        <!-- <br>police_report_available:
         <select name="police_report_available" id="police_report_available">
             <option value="YES">YES</option>
             <option value="NO">NO</option>
+        </select> -->
+
+        <!-- insured_hobbies -->
+        <!-- <br>insured_hobbies:
+        <select name="insured_hobbies" id="insured_hobbies">
+            <option value="sleeping">sleeping</option>
+            <option value="reading">reading</option>
+            <option value="board-games">board-games</option>
+            <option value="basketball">basketball</option>
+            <option value="bungie-jumping">bungie-jumping</option>
+            <option value="camping">camping</option>
+            <option value="chess">chess</option>
+            <option value="cross-fit">cross-fit</option>
+            <option value="dancing ">dancing </option>
+            <option value="exercise ">exercise </option>
+            <option value="golf ">golf </option>
+            <option value="hiking ">hiking </option>
+            <option value="kayaking ">kayaking </option>
+            <option value="movies ">movies </option>
+            <option value="paintball ">paintball </option>
+            <option value="polo ">polo </option>
+            <option value="skydiving ">skydiving </option>
+            <option value="video-games ">video-games </option>
+            <option value="yachting ">yachting </option>           
+        </select> -->
+
+        <!-- incident_state -->
+        <br>incident_state:
+        <select name="incident_state" id="incident_state">
+            <option value="NY">NY</option>
+            <option value="OH">OH</option>
+            <option value="PA">PA</option>
+            <option value="SC">SC</option>
+            <option value="VA">VA</option>
+            <option value="WV">WV</option>
+                     
         </select>
 
         <!-- injury_claim -->
-        <br>injury_claim:
-        <input type="number" min="0" name="injury_claim" id="injury_claim">
+        <!-- <br>injury_claim:
+        <input type="number" min="0" name="injury_claim" id="injury_claim"> -->
 
         <!-- property_claim -->
         <br>property_claim:
         <input type="number" min="0" name="property_claim" id="property_claim">
 
         <!-- vehicle_claim -->
-        <br>vehicle_claim:
-        <input type="number" min="0" name="vehicle_claim" id="vehicle_claim">
+        <!-- <br>vehicle_claim:
+        <input type="number" min="0" name="vehicle_claim" id="vehicle_claim"> -->
 
         <!-- submit -->
-        <br><input type="submit" value="Predict" onclick='predict; return true'>
+        <br><input type="submit" value="Predict" onclick='predict' return true>
     </form>
 </section>
 

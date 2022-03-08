@@ -16,16 +16,21 @@ class trainingModel:
 
         "Data Preprocessing"
         # remove non-relevent cols
-        nonRelCols = ['policy_number','policy_bind_date','policy_state','insured_zip','incident_location',
-                      'incident_date','incident_state','incident_city','insured_hobbies',
-                      'auto_make','auto_model','auto_year','age','total_claim_amount']
-        data = preprocessor.removeColumns(data,nonRelCols)
+        # nonRelCols = ['policy_number','policy_bind_date','policy_state','insured_zip','incident_location',
+        #               'incident_date','incident_state','incident_city','insured_hobbies',
+        #               'auto_make','auto_model','auto_year','age','total_claim_amount']
+        "Selecting choosen features only from dataset based EDA results"
+        features = ['incident_type','incident_severity','authorities_contacted',
+            'incident_state','policy_annual_premium','property_claim','policy_deductable', 
+            'umbrella_limit','number_of_vehicles_involved', 'bodily_injuries', 'witnesses','fraud_reported']
+        data = preprocessor.removeColumns(data,features)
         data = preprocessor.removeWhiteSpaces(data)
         data = preprocessor.cleanup(data)
         data = preprocessor.imputeMissingValues(data)
         data = preprocessor.scaledata(data)
         data = preprocessor.encodeCatcols(data)
         X,y = preprocessor.seperateLabels(data)
+        data.to_csv("Data_Preprocessor/dataAfterPreprocessing.csv")
 
         # preprocessor.plotdist(X)
 
@@ -55,7 +60,7 @@ class trainingModel:
 
             # Model Save
             fileOps = fileMethods()
-            fileOps.saveModel(bestModel,bestModelName+'_'+str(i))
+            fileOps.saveModel(bestModel,bestModelName,str(i))
             print('Model Saved based on clusters in Model Folder')
         #
 

@@ -38,7 +38,7 @@ class kMeansClustring:
 
         # Save Model
         modelStore = fileMethods()
-        modelStore.saveModel(cluster,'Kmeans')
+        modelStore.saveModel(cluster,'Kmeans','Kmeans')
         print('Model Stored')
         return data
 
