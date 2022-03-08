@@ -8,7 +8,7 @@ An user-friednly and easy to use web application which was built using python,fl
 - Build a classification methodology AI based App to determine whether a customer is placing a fraudulent insurance claim. 
 
 ## How does the app look?
-![App_Works2](https://user-images.githubusercontent.com/83899750/156911229-26237593-2286-42d8-8d50-791a043cddd8.gif)
+![Media1_final](https://user-images.githubusercontent.com/83899750/157322271-0aeb1d03-1b44-464c-8c26-594e35266619.gif)
 
 ### How the App was biult?
   1. Sqlite3 SQL used for data extraction, transformation, and loading.
