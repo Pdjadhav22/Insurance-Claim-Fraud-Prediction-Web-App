@@ -32,7 +32,7 @@ class predFromRec:
     #    police_report_available = request.form['police_report_available']
     #    injury_claim = request.form['injury_claim']
        property_claim = request.form['property_claim']
-       insured_hobbies = request.form['insured_hobbies']
+      #  insured_hobbies = request.form['insured_hobbies']
        incident_state = request.form['incident_state']
     #    vehicle_claim = request.form['vehicle_claim']
 
@@ -61,7 +61,7 @@ class predFromRec:
         #    'injury_claim': int(injury_claim), 
            'property_claim': int(property_claim),
             # 'vehicle_claim': int(vehicle_claim),
-            'insured_hobbies': insured_hobbies,
+            # 'insured_hobbies': insured_hobbies,
             'incident_state': incident_state,
            }
     

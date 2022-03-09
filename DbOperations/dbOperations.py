@@ -52,7 +52,8 @@ class dbOperations:
                 next(f)
                 data = csv.reader(f, delimiter='\n')
                 for rec in data:
-                    rec = ','.join(["'"+i+"'" for i in rec[0].split(',')])
+                    rec = rec[0].replace("'", '')
+                    rec = ','.join(["'"+i+"'" for i in rec.split(',')])
                     # rec = "','".join(rec.split(','))
                     q1 = f"insert into GoodRawData values ({rec})"
                     cur.execute(q1)

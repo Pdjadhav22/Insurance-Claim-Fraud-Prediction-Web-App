@@ -22,7 +22,7 @@ class tuneModel:
                     'criterion':['gini','entropy'],
                     'random_state':[0,100,200,300]
                    }
-        gsCV = GridSearchCV(estimator=clfRF,param_grid=params,scoring='recall',cv=5,verbose=3)
+        gsCV = GridSearchCV(estimator=clfRF,param_grid=params,scoring='roc_auc',cv=5,verbose=3)
         gsCV.fit(X_train,y_train)
         gsCVResult = pd.DataFrame(gsCV.cv_results_)
         gsCVResult.to_csv("bestModelFinder/RFGCVresults.csv", index=False)
@@ -42,7 +42,7 @@ class tuneModel:
                   "criterion": ['gini', 'entropy'],
                   "max_depth": range(8, 10, 1)
                   }
-        gsCV = GridSearchCV(estimator=clfXGB, param_grid=params,scoring='recall',
+        gsCV = GridSearchCV(estimator=clfXGB, param_grid=params,scoring='roc_auc',
                             cv=5, verbose=1)
         gsCV.fit(X_train,y_train)
         gsCVResult = pd.DataFrame(gsCV.cv_results_)
