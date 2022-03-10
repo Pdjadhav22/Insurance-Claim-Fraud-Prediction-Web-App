@@ -72,8 +72,8 @@ def predRec():
             return render_template('index.html', prediction_text= 'Yes, This calim is a Fraud')
             # return res
 
-predRec()
-predictRouteClient()
+# predRec()
+# predictRouteClient()
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
