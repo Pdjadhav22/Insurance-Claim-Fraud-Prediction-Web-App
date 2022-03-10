@@ -56,6 +56,8 @@ def predictRouteClient():
              batchPredictionText='''Predcition Completed
             Output saved in predOutFile/Prediction.csv''')
             return res
+        
+        else: return 'Bad path dir'
 
 @app.route('/singleRec', methods=['POST'])
 def predRec():

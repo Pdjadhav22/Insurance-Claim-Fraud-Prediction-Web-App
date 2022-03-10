@@ -20,14 +20,15 @@ class trainingModel:
         #               'incident_date','incident_state','incident_city','insured_hobbies',
         #               'auto_make','auto_model','auto_year','age','total_claim_amount']
         "Selecting choosen features only from dataset based EDA results"
-        features = ['incident_type','incident_severity','authorities_contacted',
-            'incident_state','policy_annual_premium','property_claim','policy_deductable', 
-            'umbrella_limit','number_of_vehicles_involved', 'bodily_injuries', 'witnesses','fraud_reported']
+        features = ['insured_hobbies', 'incident_type', 'collision_type', 'incident_severity',
+            'authorities_contacted', 'incident_state', 'property_damage','umbrella_limit',
+           'policy_deductable','number_of_vehicles_involved','witnesses','policy_annual_premium',
+           'property_claim','fraud_reported']
         data = preprocessor.removeColumns(data,features)
         data = preprocessor.removeWhiteSpaces(data)
         data = preprocessor.cleanup(data)
         data = preprocessor.imputeMissingValues(data)
-        data = preprocessor.scaledata(data)
+        # data = preprocessor.scaledata(data)
         data = preprocessor.encodeCatcols(data)
         X,y = preprocessor.seperateLabels(data)
         data.to_csv("Data_Preprocessor/dataAfterPreprocessing.csv")
@@ -37,31 +38,37 @@ class trainingModel:
         # Temp - Data imbalance need to handle
         # X,y = handleImbalanceDataset(X,y)
 
-        "Applying Clustering Approach"
-        cluster = kMeansClustring()
-        cluster.elbowPlot(X)
-        knee = cluster.getKnee(X)
-        X = cluster.createClusters(X,knee)
+        # "Applying Clustering Approach"
+        # cluster = kMeansClustring()
+        # cluster.elbowPlot(X)
+        # knee = cluster.getKnee(X)
+        # X = cluster.createClusters(X,knee)
 
         # "Parsing over all clusters to find best model for each cluster"
         # # adding label col to X for ease of split base on cluster
-        X['labels'] = y
-        for i in X['Cluster'].unique():
-            print(i)
-            df = X[X.Cluster==i]
-            x = df.drop(['labels','Cluster'],axis=1)
-            y = df.labels
+        # X['labels'] = y
+        # for i in X['Cluster'].unique():
+        #     print(i)
+        #     df = X[X.Cluster==i]
+        #     x = df.drop(['labels','Cluster'],axis=1)
+        #     y = df.labels
 
-            X_train,X_val,y_train,y_val = train_test_split(x,y,train_size=0.8,random_state=40)
+        #     X_train,X_val,y_train,y_val = train_test_split(x,y,train_size=0.8,random_state=40)
+
+        #     # Getting best Model
+        #     modelFinder = tuneModel()
+        #     bestModel, bestModelName = modelFinder.getBestModel(X_train,X_val,y_train,y_val)
+
+        X_train,X_val,y_train,y_val = train_test_split(X,y,train_size=0.8,random_state=40)
 
             # Getting best Model
-            modelFinder = tuneModel()
-            bestModel, bestModelName = modelFinder.getBestModel(X_train,X_val,y_train,y_val)
+        modelFinder = tuneModel()
+        bestModel, bestModelName = modelFinder.getBestModel(X_train,X_val,y_train,y_val)
 
-            # Model Save
-            fileOps = fileMethods()
-            fileOps.saveModel(bestModel,bestModelName,str(i))
-            print('Model Saved based on clusters in Model Folder')
+        # Model Save
+        fileOps = fileMethods()
+        fileOps.saveModel(bestModel,bestModelName)
+        print('Model Saved based on clusters in Model Folder')
         #
 
 

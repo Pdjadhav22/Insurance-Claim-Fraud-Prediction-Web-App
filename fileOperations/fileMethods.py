@@ -9,8 +9,8 @@ class fileMethods:
     def __init__(self):
         self.modelDir = 'models/'
 
-    def saveModel(self, model, fileName, clusteNumber):
-        loc = os.path.join(self.modelDir+clusteNumber+'/')       
+    def saveModel(self, model, fileName):
+        loc = os.path.join(self.modelDir+'/')       
         if os.path.isdir(loc):
             shutil.rmtree(loc)
             os.makedirs(loc)
@@ -20,14 +20,14 @@ class fileMethods:
              pickle.dump(model ,f)
         return 'success'
 
-    def modelLoader(self,filename, clusternumber):
-        with open(self.modelDir+clusternumber+'/'+filename+'.sav', 'rb') as f:
+    def modelLoader(self,filename):
+        with open(self.modelDir+'/'+filename+'.sav', 'rb') as f:
             return pickle.load(f)
         print(filename , " Model Loaded successfully")
 
-    def findBestModel(self,clusteNumber):
+    def findBestModel(self):
         modelName = ''
-        for dir in listdir(self.modelDir+clusteNumber+'/'):
+        for dir in listdir(self.modelDir+'/'):
             # modelNamesplit=str(dir).split('_')
             # if len(modelNamesplit)>1 and int(modelNamesplit[1])==clusteNumber:
             dir = dir.split('.')[0]
