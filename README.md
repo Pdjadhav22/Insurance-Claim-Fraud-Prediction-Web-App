@@ -8,7 +8,7 @@ An user-friednly and easy to use web application which was built using python,fl
 - Build a classification methodology AI based App to determine whether a customer is placing a fraudulent insurance claim. 
 
 ## How does the app look?
-![Media1_final](https://user-images.githubusercontent.com/83899750/157322271-0aeb1d03-1b44-464c-8c26-594e35266619.gif)
+![vdospeed2](https://user-images.githubusercontent.com/83899750/157584760-02ff4cb0-8795-432e-83b7-668fce66651d.gif)
 
 ### How the App was biult?
   1. Sqlite3 SQL used for data extraction, transformation, and loading.
@@ -17,9 +17,9 @@ An user-friednly and easy to use web application which was built using python,fl
   5. HTML used for Web app Fornt-end developent.
 
 ## Development Lifecycle of the App
-![devLifeCycle](https://user-images.githubusercontent.com/83899750/156908354-04affb21-99be-4173-a158-0e96e9724e77.jpg)
-![AppFlowChart](https://user-images.githubusercontent.com/83899750/156908995-7ff76f17-189d-4e2c-827a-50b6dbfb36dc.jpg)
-  
+![devLifeCycle_2](https://user-images.githubusercontent.com/83899750/157586323-fcef0dbe-05a4-491c-a1cb-cf88011ac8d2.jpg)
+![AppFlowChart_1](https://user-images.githubusercontent.com/83899750/157586354-99201e6a-3a0c-44a0-a802-fda45b930cd3.jpg)
+
 ## Languages Used
 - Python
 - Flask Web Framework
